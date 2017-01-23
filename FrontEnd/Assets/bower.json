@@ -1,0 +1,17 @@
+{
+  "name": "Base Project Assets",
+  "authors": [
+    "Anexsoft"
+  ],
+  "description": "Resource for client side",
+  "main": "",
+  "license": "MIT",
+  "homepage": "http://anexsoft.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

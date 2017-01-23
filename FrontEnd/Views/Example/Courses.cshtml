@@ -1,0 +1,41 @@
+﻿@model List<CourseForGridView>
+@{
+    ViewBag.Title = "Courses";
+}
+
+<h2 class="page-header">Courses</h2>
+
+<div class="btn-group btn-group-justified well">
+    <a class="btn btn-primary" href="~/example">
+        <i class="fa fa-user"></i> Estudiantes
+    </a>
+    <a class="btn btn-danger" href="~/example/coursecrud">
+        <i class="fa fa-plus"></i> Nuevo registro
+    </a>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th style="width:200px;">Estudiantes</th>
+            <th style="width:40px;"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var m in Model)
+        {
+            <tr>
+                <td>
+                    <a href="~/example/coursecrud/@m.Id">@m.Name</a>
+                </td>
+                <td>@m.Students</td>
+                <td>
+                    <a class="btn btn-xs btn-danger btn-block" href="~/example/coursedelete/@m.Id">
+                        <i class="fa fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
