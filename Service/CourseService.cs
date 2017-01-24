@@ -25,21 +25,21 @@ namespace Service
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
         private readonly IDbContextScopeFactory _dbContextScopeFactory;
-        private readonly IRepository<Course> _courseReppository;
-        private readonly IRepository<Student> _studentReppository;
-        private readonly IRepository<StudentPerCourse> _studentPerCourseReppository;
+        private readonly IRepository<Course> _courseRepository;
+        private readonly IRepository<Student> _studentRepository;
+        private readonly IRepository<StudentPerCourse> _studentPerCourseRepository;
 
         public CourseService(
             IDbContextScopeFactory dbContextScopeFactory,
-            IRepository<Course> courseReppository,
-            IRepository<Student> studentReppository,
-            IRepository<StudentPerCourse> studentPerCourseReppository
+            IRepository<Course> courseRepository,
+            IRepository<Student> studentRepository,
+            IRepository<StudentPerCourse> studentPerCourseRepository
         )
         {
             _dbContextScopeFactory = dbContextScopeFactory;
-            _courseReppository = courseReppository;
-            _studentReppository = studentReppository;
-            _studentPerCourseReppository = studentPerCourseReppository;
+            _courseRepository = courseRepository;
+            _studentRepository = studentRepository;
+            _studentPerCourseRepository = studentPerCourseRepository;
         }
 
         /// <summary>
@@ -54,11 +54,11 @@ namespace Service
             {
                 using (var ctx = _dbContextScopeFactory.CreateReadOnly())
                 {
-                    var suscribedCourses = _studentPerCourseReppository.Find(
+                    var suscribedCourses = _studentPerCourseRepository.Find(
                         x => x.StudentId == studentId
                     ).AsQueryable();
 
-                    result = _courseReppository.GetAll(x => x.StudentPerCourses)
+                    result = _courseRepository.GetAll(x => x.StudentPerCourses)
                                                .OrderBy(x => x.Name)
                                                .Select(x => new StudentForCourseSuscribed {
                                                    CourseId = x.Id,
@@ -84,7 +84,7 @@ namespace Service
             {
                 using (var ctx = _dbContextScopeFactory.Create())
                 {
-                    var courseByStudent = _studentPerCourseReppository.Find(x =>
+                    var courseByStudent = _studentPerCourseRepository.Find(x =>
                         x.StudentId == model.StudentId
                         && x.CourseId == model.CourseId
                     ).SingleOrDefault();
@@ -92,11 +92,11 @@ namespace Service
                     if (courseByStudent == null)
                     {
                         model.SuscribedAt = DateTime.Now;
-                        _studentPerCourseReppository.Insert(model);
+                        _studentPerCourseRepository.Insert(model);
                     }
                     else
                     {
-                        _studentPerCourseReppository.Delete(courseByStudent);
+                        _studentPerCourseRepository.Delete(courseByStudent);
                     }
 
                     ctx.SaveChanges();
@@ -119,7 +119,7 @@ namespace Service
             {
                 using (var ctx = _dbContextScopeFactory.CreateReadOnly())
                 {
-                    result = _courseReppository.GetAll(x => x.StudentPerCourses)
+                    result = _courseRepository.GetAll(x => x.StudentPerCourses)
                         .Select(x => new CourseForGridView
                         {
                           Id = x.Id,
@@ -144,7 +144,7 @@ namespace Service
             {
                 using (var ctx = _dbContextScopeFactory.Create())
                 {
-                    result = _courseReppository.SingleOrDefault(x => x.Id == id);
+                    result = _courseRepository.SingleOrDefault(x => x.Id == id);
                 }
             }
             catch (Exception e)
@@ -165,11 +165,11 @@ namespace Service
                 {
                     if (model.Id == 0)
                     {
-                        _courseReppository.Insert(model);
+                        _courseRepository.Insert(model);
                     }
                     else
                     {
-                        _courseReppository.Update(model);
+                        _courseRepository.Update(model);
                     }
 
                     ctx.SaveChanges();
@@ -192,8 +192,8 @@ namespace Service
             {
                 using (var ctx = _dbContextScopeFactory.Create())
                 {
-                    var model = _courseReppository.SingleOrDefault(x => x.Id == id);
-                    _courseReppository.Delete(model);
+                    var model = _courseRepository.SingleOrDefault(x => x.Id == id);
+                    _courseRepository.Delete(model);
 
                     ctx.SaveChanges();
                     rh.SetResponse(true);

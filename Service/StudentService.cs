@@ -48,7 +48,7 @@ namespace Service
                           Name = x.Name,
                           Email = x.Email,
                           Birthday = x.Birthday,
-                          CurrentStatus = x.CurrentStatus == Enums.Status.Enable ? "Activo" : "Inactivo",
+                          CurrentStatus = x.CurrentStatus == Enums.Status.Enable ? "Active" : "Disabled",
                           NumberOfCourses = x.StudentPerCourses.Count()
                         }).ToList();
                 }
