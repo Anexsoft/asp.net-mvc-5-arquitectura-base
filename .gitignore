@@ -170,6 +170,8 @@ PublishScripts/
 *.nuget.props
 *.nuget.targets
 
+FrontEnd/App_Data/Logs/*
+
 # Microsoft Azure Build Output
 csx/
 *.build.csdef
