@@ -128,6 +128,7 @@ namespace Persistence.Repository
         {
             return DbContext.Database.ExecuteSqlCommand(query, parameters);
         }
+
         public IQueryable<I> ExecuteSqlCommand<I>(string query, params object[] parameters) where I : class
         {
             return DbContext.Database.SqlQuery<I>(query, parameters).AsQueryable();
