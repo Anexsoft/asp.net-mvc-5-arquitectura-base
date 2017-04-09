@@ -1,28 +1,52 @@
 ﻿namespace Common
 {
-    public class ResponseHelper
+    public abstract class ResponseHelperBase
     {
-        public dynamic Result { get; set; }
-        public bool Response { get; set; }
-        public string Message { get; set; }
-        public string Href { get; set; }
-        public string Function { get; set; }
+        public bool response { get; set; }
+        public string message { get; set; }
+        public string function { get; set; }
+        public string href { get; set; }
 
-        public ResponseHelper()
+        protected void PrepareResponse(bool r, string m = "")
         {
-            Response = false;
-            Message = "Ocurrio un error inesperado";
+            response = r;
+
+            if (r)
+            {
+                message = m;
+            }
+            else
+            {
+                message = (m == "" ? "An unexpected error occurred" : m);
+            }
         }
 
-        public void SetResponse(bool r, string m = "")
+        public ResponseHelperBase()
         {
-            Response = r;
-            Message = m;
+            response = false;
+            message = "An unexpected error occurred";
+        }
+    }
 
-            if (!r && m == "")
-            {
-                Message = "Ocurrio un error inesperado";
-            }
+    public class ResponseHelper : ResponseHelperBase
+    {
+        public dynamic result { get; set; }
+
+        public ResponseHelper SetResponse(bool r, string m = "")
+        {
+            PrepareResponse(r, m);
+            return this;
+        }
+    }
+
+    public class ResponseHelper<T> : ResponseHelperBase where T : class
+    {
+        public T result { get; set; }
+
+        public ResponseHelper<T> SetResponse(bool r, string m = "")
+        {
+            PrepareResponse(r, m);
+            return this;
         }
     }
 }
