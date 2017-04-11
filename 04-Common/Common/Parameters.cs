@@ -1,6 +1,6 @@
 ﻿namespace Common
 {
-    public class Paramaters
+    public class Parameters
     {
         public const string AppContext = "AppContext";
     }

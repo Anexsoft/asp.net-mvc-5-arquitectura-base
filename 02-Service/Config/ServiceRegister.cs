@@ -12,10 +12,7 @@ namespace Service.Config
             var ambientDbContextLocator = new AmbientDbContextLocator();
 
             container.Register<IDbContextScopeFactory>((x) => new DbContextScopeFactory(null));
-
-            container.Register<IRepository<Student>>((x) => new Repository<Student>(ambientDbContextLocator));
-            container.Register<IRepository<Course>>((x) => new Repository<Course>(ambientDbContextLocator));
-            container.Register<IRepository<StudentPerCourse>>((x) => new Repository<StudentPerCourse>(ambientDbContextLocator));
+            container.Register(typeof(IRepository<>), typeof(Repository<>), new PerScopeLifetime());
 
             container.Register<IStudentService, StudentService>();
             container.Register<IStudentPerCourseService, StudentPerCourseService>();
