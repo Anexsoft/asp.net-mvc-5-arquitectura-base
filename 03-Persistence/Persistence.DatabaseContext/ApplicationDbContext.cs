@@ -7,7 +7,8 @@ using System.Reflection;
 using System.Linq;
 using Model.Helper;
 using System;
-using EntityFramework.DynamicFilters;  
+using EntityFramework.DynamicFilters;
+using Common.CustomFilters;
 
 namespace Persistence.DatabaseContext
 {

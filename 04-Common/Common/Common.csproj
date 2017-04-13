@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CurrentUserHelper.cs" />
+    <Compile Include="CustomFilters\ISoftDeleted.cs" />
     <Compile Include="DependecyFactory.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="MyExtensions.cs" />

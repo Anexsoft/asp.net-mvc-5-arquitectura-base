@@ -1,4 +1,5 @@
-﻿using Persistence.DatabaseContext;
+﻿using Common.CustomFilters;
+using Persistence.DatabaseContext;
 using Persistence.DbContextScope;
 using System;
 using System.Collections.Generic;
@@ -87,11 +88,7 @@ namespace Persistence.Repository
 
         public void Delete(T entity)
         {
-            var isSoftDeleted = entity.GetType().GetInterfaces().Select(x =>
-                x.Name
-            ).Any(x => x.Equals("ISoftDeleted"));
-
-            if (isSoftDeleted)
+            if (entity is ISoftDeleted)
             {
                 DbContext.Set<T>().Attach(entity);
                 DbContext.Entry(entity).State = EntityState.Modified;

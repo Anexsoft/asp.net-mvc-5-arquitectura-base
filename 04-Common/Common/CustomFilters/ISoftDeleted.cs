@@ -1,4 +1,4 @@
-﻿namespace Model.Helper
+﻿namespace Common.CustomFilters
 {
     public interface ISoftDeleted
     {

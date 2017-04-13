@@ -1,5 +1,6 @@
-﻿using Model.Helper;
-using System.Collections.Generic; 
+﻿using Common.CustomFilters;
+using Model.Helper;
+using System.Collections.Generic;
 
 namespace Model.Domain
 {
