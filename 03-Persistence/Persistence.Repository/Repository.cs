@@ -90,6 +90,8 @@ namespace Persistence.Repository
         {
             if (entity is ISoftDeleted)
             {
+                ((ISoftDeleted)entity).Deleted = true;
+
                 DbContext.Set<T>().Attach(entity);
                 DbContext.Entry(entity).State = EntityState.Modified;
             }
