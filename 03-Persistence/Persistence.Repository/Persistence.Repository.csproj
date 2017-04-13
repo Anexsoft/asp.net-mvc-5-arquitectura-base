@@ -58,6 +58,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\04-Common\Common\Common.csproj">
+      <Project>{FC851E96-7275-4D48-A340-9BE06137A8AB}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Persistence.DatabaseContext\Persistence.DatabaseContext.csproj">
       <Project>{227c2f50-0778-43c1-80ef-7eeef85005e9}</Project>
       <Name>Persistence.DatabaseContext</Name>
