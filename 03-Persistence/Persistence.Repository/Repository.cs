@@ -87,7 +87,19 @@ namespace Persistence.Repository
 
         public void Delete(T entity)
         {
-            DbContext.Set<T>().Remove(entity);
+            var isSoftDeleted = entity.GetType().GetInterfaces().Select(x =>
+                x.Name
+            ).Any(x => x.Equals("ISoftDeleted"));
+
+            if (isSoftDeleted)
+            {
+                DbContext.Set<T>().Attach(entity);
+                DbContext.Entry(entity).State = EntityState.Modified;
+            }
+            else
+            {
+                DbContext.Set<T>().Remove(entity);
+            }
         }
 
         public void Insert(T entity)

@@ -65,20 +65,16 @@ namespace Persistence.DatabaseContext
                         entity.CreatedAt = date;
                         entity.CreatedBy = userId;
                     }
-                    else
+                    else if (entity is ISoftDeleted)
                     {
-                        if (entry.State == EntityState.Deleted && entity is ISoftDeleted)
-                        {
-                            entry.State = EntityState.Modified;
+                        entity.DeletedAt = date;
+                        entity.DeletedBy = userId;
 
-                            entity.DeletedAt = date;
-                            entity.DeletedBy = userId;
-                            ((ISoftDeleted)entity).Deleted = true;
-                        }
+                        ((ISoftDeleted)entity).Deleted = true;
                     }
 
-                    base.Entry(entity).Property(x => x.CreatedAt).IsModified = false;
-                    base.Entry(entity).Property(x => x.CreatedBy).IsModified = false;
+                    Entry(entity).Property(x => x.CreatedAt).IsModified = false;
+                    Entry(entity).Property(x => x.CreatedBy).IsModified = false;
 
                     entity.UpdatedAt = date;
                     entity.UpdatedBy = userId;
