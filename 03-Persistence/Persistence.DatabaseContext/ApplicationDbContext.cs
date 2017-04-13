@@ -18,7 +18,7 @@ namespace Persistence.DatabaseContext
         public virtual DbSet<Course> Course { get; set; }
 
         public ApplicationDbContext()
-            : base(Parameters.AppContext, throwIfV1Schema: false)
+            : base(string.Format("name={0}", Parameters.AppContext))
         {
         }
 
