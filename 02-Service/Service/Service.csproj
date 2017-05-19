@@ -31,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.DynamicFilters, Version=2.5.0.0, Culture=neutral, PublicKeyToken=146423a1b8d60775, processorArchitecture=MSIL">
@@ -39,7 +39,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="LightInject, Version=4.1.5.0, Culture=neutral, processorArchitecture=MSIL">
@@ -51,8 +51,36 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Owin.Security.OAuth.2.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.4.3.11\lib\net45\NLog.dll</HintPath>
+      <HintPath>..\..\packages\NLog.4.3.11\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -73,28 +101,29 @@
     <Compile Include="StudentService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\04-Common\Common\Common.csproj">
+    <ProjectReference Include="..\..\04-Common\Common\Common.csproj">
       <Project>{fc851e96-7275-4d48-a340-9be06137a8ab}</Project>
       <Name>Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\04-Common\Model\Model.csproj">
+    <ProjectReference Include="..\..\04-Common\Model\Model.csproj">
       <Project>{0aebcabd-3b22-41ef-8e0f-8e10866f0eb3}</Project>
       <Name>Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\03-Persistence\Persistence.DatabaseContext\Persistence.DatabaseContext.csproj">
+    <ProjectReference Include="..\..\03-Persistence\Persistence.DatabaseContext\Persistence.DatabaseContext.csproj">
       <Project>{227c2f50-0778-43c1-80ef-7eeef85005e9}</Project>
       <Name>Persistence.DatabaseContext</Name>
     </ProjectReference>
-    <ProjectReference Include="..\03-Persistence\Persistence.DbContextScope\Persistence.DbContextScope.csproj">
+    <ProjectReference Include="..\..\03-Persistence\Persistence.DbContextScope\Persistence.DbContextScope.csproj">
       <Project>{B8C1BE7C-90AD-4A6B-A8E9-765E6B9DF9FC}</Project>
       <Name>Persistence.DbContextScope</Name>
     </ProjectReference>
-    <ProjectReference Include="..\03-Persistence\Persistence.Repository\Persistence.Repository.csproj">
+    <ProjectReference Include="..\..\03-Persistence\Persistence.Repository\Persistence.Repository.csproj">
       <Project>{5262083d-877d-4258-9cfe-0576f0437072}</Project>
       <Name>Persistence.Repository</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,5 @@
 ﻿using Common;
+using Model.Auth;
 using Model.Custom;
 using Model.Domain;
 using NLog;
@@ -23,14 +24,20 @@ namespace Service
         private static Logger logger = LogManager.GetCurrentClassLogger();
         private readonly IDbContextScopeFactory _dbContextScopeFactory;
         private readonly IRepository<Student> _studentRepository;
+        private readonly IRepository<ApplicationUser> _applicationUser;
+        private readonly IRepository<ApplicationRole> _applicationRole;
 
         public StudentService(
             IDbContextScopeFactory dbContextScopeFactory,
-            IRepository<Student> studentRepository
+            IRepository<Student> studentRepository,
+            IRepository<ApplicationUser> applicationUser,
+            IRepository<ApplicationRole> applicationRole
         )
         {
             _dbContextScopeFactory = dbContextScopeFactory;
             _studentRepository = studentRepository;
+            _applicationUser = applicationUser;
+            _applicationRole = applicationRole;
         }
 
         public IEnumerable<StudentForGridView> GetAll()
@@ -41,7 +48,10 @@ namespace Service
             {
                 using (var ctx = _dbContextScopeFactory.CreateReadOnly())
                 {
-                    result = _studentRepository.GetAll(x => x.StudentPerCourses)
+                    var users = _applicationUser.GetAll().ToList();
+                    var roles = _applicationRole.GetAll().ToList();
+
+                    result = _studentRepository.GetAll(x => x.StudentPerCourses, x => x.CreatedUser)
                         .Select(x => new StudentForGridView
                         {
                           Id = x.Id,
@@ -49,7 +59,8 @@ namespace Service
                           Email = x.Email,
                           Birthday = x.Birthday,
                           CurrentStatus = x.CurrentStatus == Enums.Status.Enable ? "Active" : "Disabled",
-                          NumberOfCourses = x.StudentPerCourses.Count()
+                          NumberOfCourses = x.StudentPerCourses.Count(),
+                          CreatedBy = x.CreatedUser.UserName
                         }).ToList();
                 }
             }

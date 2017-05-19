@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
-using Model.Auth;
 using Common;
 using System.Data.Entity;
 using Model.Domain;
@@ -12,7 +11,7 @@ using Common.CustomFilters;
 
 namespace Persistence.DatabaseContext
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext
     {
         public virtual DbSet<Student> Student { get;set; }
         public virtual DbSet<StudentPerCourse> StudentPerCourse { get; set; }

@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Auth\ApplicationRole.cs" />
     <Compile Include="Auth\ApplicationUser.cs" />
     <Compile Include="Custom\StudentForCourseSuscribed.cs" />
     <Compile Include="Custom\CourseForGridView.cs" />

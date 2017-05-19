@@ -7,6 +7,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using FrontEnd.ViewModels;
+using Auth.Service;
+using Model.Auth;
 
 namespace FrontEnd.Controllers
 {
@@ -15,15 +17,36 @@ namespace FrontEnd.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationRoleManager _roleManager;
 
         public ManageController()
         {
         }
 
-        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public ManageController(
+            ApplicationUserManager userManager,
+            ApplicationSignInManager signInManager,
+            ApplicationRoleManager roleManager
+        )
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            RoleManager = roleManager;
+        }
+
+        public ActionResult AddRole()
+        {
+            var roles = RoleManager.Roles.ToList();
+
+            var role = new ApplicationRole
+            {
+                Id = Guid.NewGuid().ToString(),
+                Name = "Admin"
+            };
+
+            RoleManager.Create(role);
+
+            return View();
         }
 
         public ApplicationSignInManager SignInManager
@@ -47,6 +70,18 @@ namespace FrontEnd.Controllers
             private set
             {
                 _userManager = value;
+            }
+        }
+
+        public ApplicationRoleManager RoleManager
+        {
+            get
+            {
+                return _roleManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationRoleManager>();
+            }
+            private set
+            {
+                _roleManager = value;
             }
         }
 

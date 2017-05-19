@@ -527,6 +527,14 @@
     <Content Include="Views\Example\CourseCrud.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\02-Service\Auth.Service\Auth.Service.csproj">
+      <Project>{5cf83629-6f04-4431-b38d-ddfe77ef58b7}</Project>
+      <Name>Auth.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\02-Service\Service\Service.csproj">
+      <Project>{28c36359-6bb2-4e51-822f-47ed2319ca5d}</Project>
+      <Name>Service</Name>
+    </ProjectReference>
     <ProjectReference Include="..\04-Common\Common\Common.csproj">
       <Project>{fc851e96-7275-4d48-a340-9be06137a8ab}</Project>
       <Name>Common</Name>
@@ -538,10 +546,6 @@
     <ProjectReference Include="..\03-Persistence\Persistence.DatabaseContext\Persistence.DatabaseContext.csproj">
       <Project>{227c2f50-0778-43c1-80ef-7eeef85005e9}</Project>
       <Name>Persistence.DatabaseContext</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\02-Service\Service.csproj">
-      <Project>{28c36359-6bb2-4e51-822f-47ed2319ca5d}</Project>
-      <Name>Service</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

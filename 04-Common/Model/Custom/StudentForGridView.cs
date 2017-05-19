@@ -14,5 +14,6 @@ namespace Model.Custom
         public DateTime Birthday { get; set; }
         public string CurrentStatus { get; set; }
         public int NumberOfCourses { get; set; }
+        public string CreatedBy { get; set; }
     }
 }

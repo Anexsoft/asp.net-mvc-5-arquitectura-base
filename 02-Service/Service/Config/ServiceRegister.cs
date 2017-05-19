@@ -15,6 +15,7 @@ namespace Service.Config
             container.Register<IDbContextScopeFactory>((x) => new DbContextScopeFactory(null));
 
             container.Register<IRepository<ApplicationUser>>((x) => new Repository<ApplicationUser>(ambientDbContextLocator));
+            container.Register<IRepository<ApplicationRole>>((x) => new Repository<ApplicationRole>(ambientDbContextLocator));
             container.Register<IRepository<Course>>((x) => new Repository<Course>(ambientDbContextLocator));
             container.Register<IRepository<Student>>((x) => new Repository<Student>(ambientDbContextLocator));
             container.Register<IRepository<StudentPerCourse>>((x) => new Repository<StudentPerCourse>(ambientDbContextLocator));

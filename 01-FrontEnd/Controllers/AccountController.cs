@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using FrontEnd.ViewModels;
 using Model.Auth;
+using Auth.Service;
 
 namespace FrontEnd.Controllers
 {
