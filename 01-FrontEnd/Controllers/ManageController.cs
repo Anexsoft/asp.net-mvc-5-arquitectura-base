@@ -34,21 +34,6 @@ namespace FrontEnd.Controllers
             RoleManager = roleManager;
         }
 
-        public ActionResult AddRole()
-        {
-            var roles = RoleManager.Roles.ToList();
-
-            var role = new ApplicationRole
-            {
-                Id = Guid.NewGuid().ToString(),
-                Name = "Admin"
-            };
-
-            RoleManager.Create(role);
-
-            return View();
-        }
-
         public ApplicationSignInManager SignInManager
         {
             get

@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
+using Newtonsoft.Json;
+using System.Security.Claims;
 using System.Web;
 
 namespace Common
@@ -12,8 +14,10 @@ namespace Common
 
     public class CurrentUserHelper
     {
-        public static CurrentUser Get {
-            get {
+        public static CurrentUser Get
+        {
+            get
+            {
                 var user = HttpContext.Current.User;
 
                 if (user == null)
@@ -25,11 +29,9 @@ namespace Common
                     return null;
                 }
 
-                return new CurrentUser {
-                    UserId = user.Identity.GetUserId(),
-                    UserName = user.Identity.GetUserName(),
-                    Name = user.Identity.Name
-                };
+                var jUser = ((ClaimsIdentity)user.Identity).FindFirst(ClaimTypes.UserData).Value;
+
+                return JsonConvert.DeserializeObject<CurrentUser>(jUser);
             }
         }
     }
