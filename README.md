@@ -9,6 +9,7 @@ Arquitectura planteada para iniciar tus proyectos ASP.NET MVC 5
 * Repository Pattern
 * Bower
 * Dependecy Injection (LightInject)
+* Automatic Parameters Seteables
 
 Más información de todo el proyecto base en
 http://anexsoft.com/p/110/proyecto-base-para-asp-net-mvc-5
