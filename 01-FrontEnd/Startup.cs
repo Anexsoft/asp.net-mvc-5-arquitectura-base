@@ -10,6 +10,7 @@ namespace FrontEnd
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+            ParamaterConfig.Initialize();
             DependecyConfig.Initialize();
         }
     }

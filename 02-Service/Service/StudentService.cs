@@ -48,9 +48,6 @@ namespace Service
             {
                 using (var ctx = _dbContextScopeFactory.CreateReadOnly())
                 {
-                    var users = _applicationUser.GetAll().ToList();
-                    var roles = _applicationRole.GetAll().ToList();
-
                     result = _studentRepository.GetAll(x => x.StudentPerCourses, x => x.CreatedUser)
                         .Select(x => new StudentForGridView
                         {

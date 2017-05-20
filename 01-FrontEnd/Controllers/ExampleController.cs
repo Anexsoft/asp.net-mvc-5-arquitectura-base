@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace FrontEnd.Controllers
 {
+    [Authorize]
     public class ExampleController : Controller
     {
         private readonly IStudentService _studentService = DependecyFactory.GetInstance<IStudentService>();

@@ -160,6 +160,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\ParamaterConfig.cs" />
     <Compile Include="App_Start\DependecyConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -518,6 +519,8 @@
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Config\app.connections.config" />
+    <Content Include="Config\app.parameters.config" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
