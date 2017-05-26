@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\03-Persistence\Persistence.DbContextScope\bin\Debug\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="LightInject, Version=4.1.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\LightInject.4.1.5\lib\net45\LightInject.dll</HintPath>
       <Private>True</Private>
@@ -57,7 +60,7 @@
     <Compile Include="CustomFilters\ISoftDeleted.cs" />
     <Compile Include="DependecyFactory.cs" />
     <Compile Include="Enums.cs" />
-    <Compile Include="MyExtensions.cs" />
+    <Compile Include="MyExtensions\String.cs" />
     <Compile Include="Parameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResponseHelper.cs" />
