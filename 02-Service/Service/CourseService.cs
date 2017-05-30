@@ -1,5 +1,4 @@
 ﻿using Common;
-using Model.Auth;
 using Model.Custom;
 using Model.Domain;
 using NLog;
@@ -7,6 +6,7 @@ using Persistence.DbContextScope;
 using Persistence.Repository;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace Service

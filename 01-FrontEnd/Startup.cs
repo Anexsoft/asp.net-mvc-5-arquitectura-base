@@ -11,7 +11,6 @@ namespace FrontEnd
         {
             ConfigureAuth(app);
             ParamaterConfig.Initialize();
-            DependecyConfig.Initialize();
         }
     }
 }
