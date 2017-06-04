@@ -67,20 +67,11 @@
   <ItemGroup>
     <Compile Include="CommonTest\MyExtensionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServiceTest\StudentTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\02-Service\Service\Service.csproj">
-      <Project>{28c36359-6bb2-4e51-822f-47ed2319ca5d}</Project>
-      <Name>Service</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\04-Common\Common\Common.csproj">
       <Project>{fc851e96-7275-4d48-a340-9be06137a8ab}</Project>
       <Name>Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\04-Common\Model\Model.csproj">
-      <Project>{0aebcabd-3b22-41ef-8e0f-8e10866f0eb3}</Project>
-      <Name>Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
