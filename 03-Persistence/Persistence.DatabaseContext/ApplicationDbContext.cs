@@ -20,6 +20,7 @@ namespace Persistence.DatabaseContext
         public ApplicationDbContext()
             : base(string.Format("name={0}", Parameters.AppContext))
         {
+
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

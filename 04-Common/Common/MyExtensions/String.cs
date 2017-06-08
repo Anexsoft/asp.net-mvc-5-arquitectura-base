@@ -1,12 +1,42 @@
-﻿namespace Common.MyExtensions
+﻿using System.Text;
+using System.Text.RegularExpressions;
+
+namespace Common.MyExtensions
 {
     public static class String
     {
-        #region Int Extensions
-        public static string LeadingZeros(this int value, int n)
+        public static string Sluglify(this string value)
         {
-            return value.ToString().PadLeft(n, '0');
+            //First to lower case
+            value = value.ToLowerInvariant();
+
+            //Remove all accents
+            var bytes = Encoding.GetEncoding("Cyrillic").GetBytes(value);
+            value = Encoding.ASCII.GetString(bytes);
+
+            //Replace spaces
+            value = Regex.Replace(value, @"\s", "-", RegexOptions.Compiled);
+
+            //Remove invalid chars
+            value = Regex.Replace(value, @"[^a-z0-9\s-_]", "", RegexOptions.Compiled);
+
+            //Trim dashes from end
+            value = value.Trim('-', '_');
+
+            //Replace double occurences of - or _
+            value = Regex.Replace(value, @"([-_]){2,}", "$1", RegexOptions.Compiled);
+
+            return value.Trim();
         }
-        #endregion
+
+        public static string Truncate(this string value, int length = 20)
+        {
+            return value.Substring(0, length);
+        }
+
+        public static string RemoveWhiteSpaces(this string dt)
+        {
+            return dt.Replace(" ", "");
+        }
     }
 }

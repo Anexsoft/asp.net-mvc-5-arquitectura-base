@@ -60,6 +60,9 @@
     <Compile Include="CustomFilters\ISoftDeleted.cs" />
     <Compile Include="DependecyFactory.cs" />
     <Compile Include="Enums.cs" />
+    <Compile Include="MyExtensions\DateTime.cs" />
+    <Compile Include="MyExtensions\Decimal.cs" />
+    <Compile Include="MyExtensions\Int.cs" />
     <Compile Include="MyExtensions\String.cs" />
     <Compile Include="Parameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
