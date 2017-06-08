@@ -2,7 +2,7 @@
 
 namespace Common.MyExtensions
 {
-    public static class DateTime
+    public static class DateTimeExtension
     {
         public static string UseMyCustomFormat(this System.DateTime dt)
         {

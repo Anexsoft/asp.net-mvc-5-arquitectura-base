@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace Common.MyExtensions
 {
-    public static class String
+    public static class StringExtension
     {
         public static string Sluglify(this string value)
         {

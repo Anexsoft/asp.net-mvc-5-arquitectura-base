@@ -1,6 +1,6 @@
 ﻿namespace Common.MyExtensions
 {
-    public static class Decimal
+    public static class DecimalExtension
     {
         public static string ToCurrencyFormat(this decimal value)
         {
