@@ -23,7 +23,7 @@ namespace Service
 
     public class CourseService : ICourseService
     {
-        private static Logger logger = LogManager.GetCurrentClassLogger();
+        private static ILogger logger = LogManager.GetCurrentClassLogger();
         private readonly IDbContextScopeFactory _dbContextScopeFactory;
         private readonly IRepository<Course> _courseRepository;
         private readonly IRepository<Student> _studentRepository;

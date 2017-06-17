@@ -14,7 +14,7 @@ namespace Service
 
     public class StudentPerCourseService : IStudentPerCourseService
     {
-        private static Logger logger = LogManager.GetCurrentClassLogger();
+        private static ILogger logger = LogManager.GetCurrentClassLogger();
         private readonly IDbContextScopeFactory _dbContextScopeFactory;
         private readonly IRepository<StudentPerCourse> _studentPerCourseRepository;
 
