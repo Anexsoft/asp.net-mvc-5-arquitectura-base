@@ -323,6 +323,7 @@
     <Content Include="Assets\bower_components\jquery\src\var\toString.js" />
     <Content Include="Assets\bower_components\jquery\src\wrap.js" />
     <Content Include="Assets\css\style.css" />
+    <Content Include="Assets\gulp\main.js" />
     <Content Include="Assets\js\enums.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">
@@ -521,6 +522,7 @@
     </Content>
     <Content Include="Config\app.connections.config" />
     <Content Include="Config\app.parameters.config" />
+    <Content Include="Assets\gulp\package.json" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
