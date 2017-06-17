@@ -1,0 +1,1 @@
+var Enums = { Gender: {Male: {name: 'Male',description: 'Male',value: 0},Female: {name: 'Female',description: 'Female',value: 1},},Status: {Enable: {name: 'Enable',description: 'Enable',value: 0},Disable: {name: 'Disable',description: 'Disable',value: 1},},MyFilters: {IsDeleted: {name: 'IsDeleted',description: 'IsDeleted',value: 0},}, };

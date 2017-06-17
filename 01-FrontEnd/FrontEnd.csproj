@@ -160,6 +160,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\EnumConfig.cs" />
     <Compile Include="App_Start\ParamaterConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -322,6 +323,7 @@
     <Content Include="Assets\bower_components\jquery\src\var\toString.js" />
     <Content Include="Assets\bower_components\jquery\src\wrap.js" />
     <Content Include="Assets\css\style.css" />
+    <Content Include="Assets\js\enums.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -362,7 +364,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Logs\" />
-    <Folder Include="Assets\js\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
