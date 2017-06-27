@@ -5,6 +5,10 @@ using Microsoft.Owin;
 using Model.Auth;
 using Persistence.DatabaseContext;
 using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Auth.Service
 {
@@ -62,6 +66,134 @@ namespace Auth.Service
                     new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
             }
             return manager;
+        }
+
+        public override Task<IdentityResult> AddToRoleAsync(string userId, string roleId)
+        {
+            try
+            {
+                using (var ctx = new ApplicationDbContext())
+                {
+                    ctx.ApplicationUserRole.Add(new ApplicationUserRole
+                    {
+                        UserId = userId,
+                        RoleId = roleId
+                    });
+
+                    ctx.SaveChanges();
+                }
+
+                return Task.FromResult(IdentityResult.Success);
+            }
+            catch (Exception ex)
+            {
+                return Task.FromResult(new IdentityResult(ex.Message));
+            }
+        }
+
+        public override Task<IdentityResult> AddToRolesAsync(string userId, params string[] roles)
+        {
+            try
+            {
+                using (var ctx = new ApplicationDbContext())
+                {
+                    foreach (var roleId in roles)
+                    {
+                        ctx.ApplicationUserRole.Add(new ApplicationUserRole
+                        {
+                            UserId = userId,
+                            RoleId = roleId
+                        });
+                    }
+
+                    ctx.SaveChanges();
+                }
+
+                return Task.FromResult(IdentityResult.Success);
+            }
+            catch (Exception ex)
+            {
+                return Task.FromResult(new IdentityResult(ex.Message));
+            }
+        }
+
+        public new Task<IEnumerable<ApplicationRole>> GetRolesAsync(string userId)
+        {
+            IEnumerable<ApplicationRole> result = new List<ApplicationRole>();
+
+            try
+            {
+                using (var ctx = new ApplicationDbContext())
+                {
+                    var roles = ctx.ApplicationUserRole.Where(x => x.UserId == userId).Select(x => x.RoleId).ToList();
+                    result = ctx.ApplicationRole.Where(x => roles.Contains(x.Id)).OrderBy(x => x.Name).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return Task.FromResult(result);
+        }
+
+        public override Task<bool> IsInRoleAsync(string userId, string roleId)
+        {
+            var result = false;
+
+            try
+            {
+                using (var ctx = new ApplicationDbContext())
+                {
+                    result = ctx.ApplicationUserRole.Any(x => x.UserId == userId && x.RoleId == roleId);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return Task.FromResult(result);
+        }
+
+        public override Task<IdentityResult> RemoveFromRoleAsync(string userId, string roleId)
+        {
+            try
+            {
+                using (var ctx = new ApplicationDbContext())
+                {
+                    var roles = ctx.ApplicationUserRole.Where(x => x.RoleId == roleId && x.UserId == userId).ToList();
+                    ctx.Entry(roles).State = EntityState.Deleted;
+
+                    ctx.SaveChanges();
+                }
+
+                return Task.FromResult(IdentityResult.Success);
+            }
+            catch (Exception ex)
+            {
+                return Task.FromResult(new IdentityResult(ex.Message));
+            }
+        }
+
+        public override Task<IdentityResult> RemoveFromRolesAsync(string userId, params string[] roles)
+        {
+            try
+            {
+                using (var ctx = new ApplicationDbContext())
+                {
+                    var rolesPerUser = ctx.ApplicationUserRole.Where(x => roles.Contains(x.RoleId) && x.UserId == userId).ToList();
+                    ctx.Entry(rolesPerUser).State = EntityState.Deleted;
+
+                    ctx.SaveChanges();
+                }
+
+                return Task.FromResult(IdentityResult.Success);
+            }
+            catch (Exception ex)
+            {
+                return Task.FromResult(new IdentityResult(ex.Message));
+            }
         }
     }
 }

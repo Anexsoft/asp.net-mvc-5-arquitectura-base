@@ -66,9 +66,9 @@
     <Compile Include="ApplicationDbContext.cs" />
     <Compile Include="Mapping\CourseMapping.cs" />
     <Compile Include="Mapping\StudentMapping.cs" />
-    <Compile Include="Migrations\201705190320210_Initialize.cs" />
-    <Compile Include="Migrations\201705190320210_Initialize.Designer.cs">
-      <DependentUpon>201705190320210_Initialize.cs</DependentUpon>
+    <Compile Include="Migrations\201706260449250_Initialize.cs" />
+    <Compile Include="Migrations\201706260449250_Initialize.Designer.cs">
+      <DependentUpon>201706260449250_Initialize.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -87,8 +87,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201705190320210_Initialize.resx">
-      <DependentUpon>201705190320210_Initialize.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201706260449250_Initialize.resx">
+      <DependentUpon>201706260449250_Initialize.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

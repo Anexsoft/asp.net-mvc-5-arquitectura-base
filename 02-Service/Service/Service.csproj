@@ -98,6 +98,7 @@
     <Compile Include="StudentPerCourseService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CourseService.cs" />
+    <Compile Include="UserService.cs" />
     <Compile Include="StudentService.cs" />
   </ItemGroup>
   <ItemGroup>

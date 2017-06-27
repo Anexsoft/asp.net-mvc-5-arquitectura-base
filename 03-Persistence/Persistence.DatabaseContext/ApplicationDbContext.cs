@@ -8,11 +8,16 @@ using Model.Helper;
 using System;
 using EntityFramework.DynamicFilters;
 using Common.CustomFilters;
+using Model.Auth;
 
 namespace Persistence.DatabaseContext
 {
     public class ApplicationDbContext : IdentityDbContext
     {
+        public DbSet<ApplicationUser> ApplicationUser { get; set; }
+        public DbSet<ApplicationRole> ApplicationRole { get; set; }
+        public DbSet<ApplicationUserRole> ApplicationUserRole { get; set; }
+
         public virtual DbSet<Student> Student { get;set; }
         public virtual DbSet<StudentPerCourse> StudentPerCourse { get; set; }
         public virtual DbSet<Course> Course { get; set; }
@@ -21,6 +26,11 @@ namespace Persistence.DatabaseContext
             : base(string.Format("name={0}", Parameters.AppContext))
         {
 
+        }
+
+        private void InitializeDatabase()
+        {
+            Database.SetInitializer<ApplicationDbContext>(null);
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
