@@ -28,11 +28,6 @@ namespace Persistence.DatabaseContext
 
         }
 
-        private void InitializeDatabase()
-        {
-            Database.SetInitializer<ApplicationDbContext>(null);
-        }
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             AddMyFilters(ref modelBuilder);
