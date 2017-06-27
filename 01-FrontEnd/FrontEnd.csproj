@@ -170,6 +170,8 @@
     <Compile Include="Controllers\ExampleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -529,6 +531,9 @@
     <Content Include="Views\Example\Crud.cshtml" />
     <Content Include="Views\Example\Courses.cshtml" />
     <Content Include="Views\Example\CourseCrud.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\Users\Get.cshtml" />
+    <Content Include="Views\Roles\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\02-Service\Auth.Service\Auth.Service.csproj">

@@ -1,0 +1,24 @@
+﻿@model List<UserForGridView>
+@{
+    ViewBag.Title = "Users";
+}
+
+<h2 class="page-header">@ViewBag.Title</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Roles</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var m in Model)
+        {
+            <tr>
+                <td><a href="~/users/get/@m.Id">@m.Email</a></td>
+                <td>@string.Join(", ", m.Roles)</td>
+            </tr>
+        }
+    </tbody>
+</table>

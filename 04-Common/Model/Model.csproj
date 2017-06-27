@@ -58,11 +58,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Auth\ApplicationUserRole.cs" />
     <Compile Include="Auth\ApplicationRole.cs" />
     <Compile Include="Auth\ApplicationUser.cs" />
     <Compile Include="Custom\StudentForCourseSuscribed.cs" />
     <Compile Include="Custom\CourseForGridView.cs" />
     <Compile Include="Custom\StudentForGridView.cs" />
+    <Compile Include="Custom\UserForGridView.cs" />
     <Compile Include="Domain\Course.cs" />
     <Compile Include="Domain\Student.cs" />
     <Compile Include="Helper\AuditEntity.cs" />
