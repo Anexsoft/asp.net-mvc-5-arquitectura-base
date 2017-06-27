@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Model.Auth;
+using NLog;
 using Persistence.DatabaseContext;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,8 @@ namespace Auth.Service
     // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
     public class ApplicationUserManager : UserManager<ApplicationUser>
     {
+        private static ILogger logger = LogManager.GetCurrentClassLogger();
+
         public ApplicationUserManager(IUserStore<ApplicationUser> store)
             : base(store)
         {
@@ -87,6 +90,7 @@ namespace Auth.Service
             }
             catch (Exception ex)
             {
+                logger.Error(ex.Message);
                 return Task.FromResult(new IdentityResult(ex.Message));
             }
         }
@@ -113,6 +117,7 @@ namespace Auth.Service
             }
             catch (Exception ex)
             {
+                logger.Error(ex.Message);
                 return Task.FromResult(new IdentityResult(ex.Message));
             }
         }
@@ -131,7 +136,7 @@ namespace Auth.Service
             }
             catch (Exception ex)
             {
-
+                logger.Error(ex.Message);
             }
 
             return Task.FromResult(result);
@@ -150,7 +155,7 @@ namespace Auth.Service
             }
             catch (Exception ex)
             {
-
+                logger.Error(ex.Message);
             }
 
             return Task.FromResult(result);
@@ -172,6 +177,7 @@ namespace Auth.Service
             }
             catch (Exception ex)
             {
+                logger.Error(ex.Message);
                 return Task.FromResult(new IdentityResult(ex.Message));
             }
         }
@@ -192,6 +198,7 @@ namespace Auth.Service
             }
             catch (Exception ex)
             {
+                logger.Error(ex.Message);
                 return Task.FromResult(new IdentityResult(ex.Message));
             }
         }
