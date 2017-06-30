@@ -91,6 +91,7 @@ namespace FrontEnd.Controllers
                         UserName = currentUser.Email,
                     });
 
+                    await UserManager.RemoveClaimAsync(currentUser.Id, new Claim(ClaimTypes.UserData, jUser));
                     await UserManager.AddClaimAsync(currentUser.Id, new Claim(ClaimTypes.UserData, jUser));
 
                     return RedirectToLocal(returnUrl);
