@@ -71,7 +71,7 @@ namespace Auth.Service
             return manager;
         }
 
-        public override Task<IdentityResult> AddToRoleAsync(string userId, string roleId)
+        public async override Task<IdentityResult> AddToRoleAsync(string userId, string roleId)
         {
             try
             {
@@ -86,12 +86,12 @@ namespace Auth.Service
                     ctx.SaveChanges();
                 }
 
-                return Task.FromResult(IdentityResult.Success);
+                return await Task.FromResult(IdentityResult.Success);
             }
             catch (Exception ex)
             {
                 logger.Error(ex.Message);
-                return Task.FromResult(new IdentityResult(ex.Message));
+                return await Task.FromResult(new IdentityResult(ex.Message));
             }
         }
 
