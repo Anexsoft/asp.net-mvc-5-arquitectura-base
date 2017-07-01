@@ -93,14 +93,12 @@ namespace FrontEnd.Controllers
 
             var identity = await UserManager.CreateIdentityAsync(currentUser, DefaultAuthenticationTypes.ApplicationCookie);
 
-            var jUser = JsonConvert.SerializeObject(new CurrentUser
-            {
-                UserId = currentUser.Id,
-                Name = currentUser.Email,
-                UserName = currentUser.Email,
-            });
+            identity = await ApplicationUser.CreateUserClaims(
+                identity,
+                UserManager,
+                currentUser.Id
+            );
 
-            identity.AddClaim(new Claim(ClaimTypes.UserData, jUser));
             AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = true }, identity);
 
             return RedirectToLocal(returnUrl);
